@@ -17,3 +17,9 @@ jobs:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       - run: docker push adamspice/auth
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITAAL_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save ticketing
+      - run: kubctl rollout retart deployment auth-depl
+          
