@@ -5,7 +5,7 @@ const client = ({ req }) => {
     // We are on the server
 
     return axios.create({
-      baseURL: "http://ingress-nginx.ingress-nginx.svc.cluster.local",
+      baseURL: "http://www.spiceys-dev-server.space/",
       headers: req.headers,
     });
   } else {
